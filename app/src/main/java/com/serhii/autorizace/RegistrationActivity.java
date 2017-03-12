@@ -30,11 +30,11 @@ public class RegistrationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
-        mAuterizace = (EditText) findViewById(R.id.login);
-        mPassword = (EditText) findViewById(R.id.password);
-        mName = (EditText) findViewById(R.id.jmeno);
-        mZareg = (Button) findViewById(R.id.btn_registration_dataBase);
-        btn_Info = (Button) findViewById(R.id.btn_Info);
+        mAuterizace = (EditText) findViewById(R.id.edit_login);
+        mPassword = (EditText) findViewById(R.id.edit_password);
+        mName = (EditText) findViewById(R.id.edit_jmeno);
+        mZareg = (Button) findViewById(R.id.button_registration_dataBase);
+        btn_Info = (Button) findViewById(R.id.button_Info);
         btn_Info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
