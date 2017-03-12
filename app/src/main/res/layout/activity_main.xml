@@ -9,16 +9,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.serhii.autorizace.MainActivity">
 
-    <Button
-        android:id="@+id/button_registration"
-        style="@style/Base.Widget.AppCompat.Button.Borderless"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Регистрация"
-        android:onClick="onClickRegistration"
-        android:layout_gravity="bottom"
-        android:layout_marginBottom="@dimen/activity_vertical_margin" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,18 +24,27 @@
             android:id="@+id/edit_password"
             android:layout_width= "match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textPassword"
             android:hint="Введите пароль" />
 
         <Button
             android:id="@+id/button_enter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:onClick="onClickAuterization"
-            android:text="Вход"
-            android:layout_gravity="center_horizontal" />
-
-
+            android:text="Вход" />
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/button_registration"
+        style="@style/Base.Widget.AppCompat.Button.Borderless"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:text="Регистрация"
+        android:onClick="onClickRegistration" />
 
 </FrameLayout>

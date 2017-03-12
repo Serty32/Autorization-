@@ -11,11 +11,12 @@ import com.serhii.autorizace.data.HelpClass;
  * Created by Serhii on 11.03.2017.
  */
 
-public class DataBase extends SQLiteOpenHelper {
+public class Database extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "vk.dp";
     public static final int DATABASE_VERSION = 1;
-    public DataBase(Context context) {
+
+    public Database(Context context) {
         super(context,DATABASE_NAME,null,DATABASE_VERSION);
     }
 
@@ -29,5 +30,6 @@ public class DataBase extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
     }
 }

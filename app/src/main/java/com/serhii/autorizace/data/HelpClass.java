@@ -7,14 +7,15 @@ import android.provider.BaseColumns;
  */
 
 public final class HelpClass implements BaseColumns {
-    private HelpClass(){
+
+    private HelpClass() {
+
     }
 
     public static final class Users {
-        public final static String TABLE_NAME = "users";
+        public static final String TABLE_NAME = "users";
         public static final String _Id = "login";
         public static final String COLUMN_PASSWORD = "password";
         public static final String COLUMN_NAME = "name";
-
     }
 }
