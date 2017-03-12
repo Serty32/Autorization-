@@ -33,8 +33,8 @@ public class RegistrationActivity extends AppCompatActivity {
         mAuterizace = (EditText) findViewById(R.id.edit_login);
         mPassword = (EditText) findViewById(R.id.edit_password);
         mName = (EditText) findViewById(R.id.edit_jmeno);
-        mZareg = (Button) findViewById(R.id.button_registration_dataBase);
-        btn_Info = (Button) findViewById(R.id.button_Info);
+        mZareg = (Button) findViewById(R.id.button_registration_database);
+        btn_Info = (Button) findViewById(R.id.button_info);
         btn_Info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,7 +59,7 @@ public class RegistrationActivity extends AppCompatActivity {
         String[] projection = {HelpClass.Users._Id, HelpClass.Users.COLUMN_PASSWORD,
                 HelpClass.Users.COLUMN_NAME};
         Cursor cursor = dp.query(HelpClass.Users.TABLE_NAME, projection, null, null, null, null, null);
-        TextView displayTextView = (TextView) findViewById(R.id.text_view_info);
+        TextView displayTextView = (TextView) findViewById(R.id.text_info);
 
         try {
             displayTextView.setText("Таблица содержит " + cursor.getCount() + " пользователей.\n\n");

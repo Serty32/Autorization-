@@ -22,20 +22,20 @@
         android:hint="Введите имя" />
 
     <TextView
-        android:id="@+id/text_view_info"
+        android:id="@+id/text_info"
         android:layout_width="200dp"
         android:layout_height="250dp"
         android:scrollHorizontally="true" />
 
     <Button
-        android:id="@+id/button_registration_dataBase"
+        android:id="@+id/button_registration_database"
         android:layout_width="186dp"
         android:layout_height="45dp"
         android:text="Зарегистрироваться"
         android:onClick="onClickZareg"/>
 
     <Button
-        android:id="@+id/button_Info"
+        android:id="@+id/button_info"
         android:layout_width="65dp"
         android:layout_height="40dp"
         android:text="information" />
