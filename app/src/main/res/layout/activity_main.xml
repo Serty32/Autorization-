@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -10,43 +9,43 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.serhii.autorizace.MainActivity">
 
-    <EditText
-        android:id="@+id/edit_login"
-        android:layout_width="200dp"
-        android:layout_height="47dp"
-        android:hint="Введите логин"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <EditText
-        android:id="@+id/edit_password"
-        android:layout_width= "200dp"
-        android:layout_height="47dp"
-        android:hint="Введите пароль"
-        android:layout_below="@+id/edit_login"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="22dp" />
-
-
-    <Button
-        android:id="@+id/button_enter"
-        android:layout_width="85dp"
-        android:layout_height="45dp"
-        android:onClick="onClickAuterization"
-        android:text="Вход"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
     <Button
         android:id="@+id/button_registration"
-        android:layout_width="135dp"
-        android:layout_height="35dp"
+        style="@style/Base.Widget.AppCompat.Button.Borderless"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="Регистрация"
         android:onClick="onClickRegistration"
-        android:layout_below="@+id/edit_password"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="29dp" />
-</RelativeLayout>
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="@dimen/activity_vertical_margin" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/edit_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Введите логин" />
+
+        <EditText
+            android:id="@+id/edit_password"
+            android:layout_width= "match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Введите пароль" />
+
+        <Button
+            android:id="@+id/button_enter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickAuterization"
+            android:text="Вход"
+            android:layout_gravity="center_horizontal" />
+
+
+
+    </LinearLayout>
+
+</FrameLayout>
