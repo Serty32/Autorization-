@@ -36,6 +36,7 @@ public class RegistrationActivity extends AppCompatActivity {
         mZareg = (Button) findViewById(R.id.button_registration_database);
         btn_Info = (Button) findViewById(R.id.button_info);
         btn_Info.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 displayDatabaseInfo();
@@ -54,7 +55,6 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
     private void displayDatabaseInfo() {
-
         SQLiteDatabase dp = mDataBAse.getReadableDatabase();
         String[] projection = {HelpClass.Users._Id, HelpClass.Users.COLUMN_PASSWORD,
                 HelpClass.Users.COLUMN_NAME};
@@ -65,7 +65,6 @@ public class RegistrationActivity extends AppCompatActivity {
             displayTextView.setText("Таблица содержит " + cursor.getCount() + " пользователей.\n\n");
             displayTextView.append(HelpClass.Users._Id + "-" + HelpClass.Users.COLUMN_NAME + "-"
                     + HelpClass.Users.COLUMN_PASSWORD + "\n");
-
             int idColumnIndex = cursor.getColumnIndex(HelpClass.Users._Id);
             int nameColumnIndex = cursor.getColumnIndex(HelpClass.Users.COLUMN_NAME);
             int passColumnIndex = cursor.getColumnIndex(HelpClass.Users.COLUMN_PASSWORD);
@@ -74,17 +73,12 @@ public class RegistrationActivity extends AppCompatActivity {
                 String currentName = cursor.getString(nameColumnIndex);
                 String currentPass = cursor.getString(passColumnIndex);
 
-                displayTextView.append(("\n" + currentId + "-" + currentName + "-" + currentPass)); }
+                displayTextView.append(("\n" + currentId + "-" + currentName + "-" + currentPass));
+            }
         } finally {
             cursor.close();
         }
-
     }
-
-
-
-
-
 
     public void insertUsers() {
         SQLiteDatabase dp = mDataBAse.getWritableDatabase();
@@ -94,15 +88,12 @@ public class RegistrationActivity extends AppCompatActivity {
         String[] projection = {HelpClass.Users._Id};
         String[] selectionArgs = {mAuterizace.getText().toString()};
         Cursor cursor = db.query(HelpClass.Users.TABLE_NAME,projection,selection,selectionArgs,null,null,null);
-
-
-
-        if(!mName.getText().toString().isEmpty()&&!mPassword.getText().toString().isEmpty()
-                &&cursor.getCount()==0) {
+        if (!mName.getText().toString().isEmpty()&& !mPassword.getText().toString().isEmpty()
+                && cursor.getCount()==0) {
             values.put(HelpClass.Users._Id, mAuterizace.getText().toString());
             values.put(HelpClass.Users.COLUMN_NAME, mName.getText().toString());
-            values.put(HelpClass.Users.COLUMN_PASSWORD, mPassword.getText().toString());}
-
+            values.put(HelpClass.Users.COLUMN_PASSWORD, mPassword.getText().toString());
+        }
         long newRowId = dp.insert(HelpClass.Users.TABLE_NAME, null, values);
         if (newRowId == -1) {
 

@@ -13,26 +13,21 @@ import com.serhii.autorizace.data.HelpClass;
 
 public class DataBase extends SQLiteOpenHelper {
 
-    public static  final  String DATABASE_NAME = "vk.dp";
-    public  static final int DATABASE_VERSION = 1;
-    public DataBase(Context context){
+    public static final String DATABASE_NAME = "vk.dp";
+    public static final int DATABASE_VERSION = 1;
+    public DataBase(Context context) {
         super(context,DATABASE_NAME,null,DATABASE_VERSION);
-
     }
+
     @Override
     public void onCreate(SQLiteDatabase db) {
         String SQL_CREATE_USER_TABLE = "CREATE TABLE " + HelpClass.Users.TABLE_NAME + "("
                 + HelpClass.Users._Id + "," + HelpClass.Users.COLUMN_PASSWORD + "," + HelpClass.Users.COLUMN_NAME
                 + ")";
         db.execSQL(SQL_CREATE_USER_TABLE);
-
     }
-
-
-
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
     }
 }

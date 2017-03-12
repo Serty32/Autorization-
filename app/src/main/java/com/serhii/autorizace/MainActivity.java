@@ -17,11 +17,9 @@ import com.serhii.autorizace.data.HelpClass;
 
 public class MainActivity extends AppCompatActivity {
     private EditText mLogin;
-    private  EditText mPassword;
+    private EditText mPassword;
     private Button mEnter;
     private DataBase mDataBase;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
                 String[] selectionArgs = {mLogin.getText().toString()};
                 Cursor cursor = dp.query(HelpClass.Users.TABLE_NAME, projection, selection,
                         selectionArgs, null, null, null);
-
                 if (cursor.moveToFirst()) {
                     if (cursor.getString(cursor.getColumnIndex(HelpClass.Users.COLUMN_PASSWORD))
                             .equals(mPassword.getText().toString())) {
@@ -49,7 +46,8 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent);
                     } else {
                         Toast.makeText(MainActivity.this, "No rule wrote log or pass",
-                                Toast.LENGTH_LONG).show();}
+                                Toast.LENGTH_LONG).show();
+                    }
                 }
                 cursor.close();
             }
@@ -70,11 +68,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this,RegistrationActivity.class);
         startActivity(intent);
     }
-
-
-
-
-
 }
 
 
