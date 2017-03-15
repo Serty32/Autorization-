@@ -1,4 +1,4 @@
-package com.serhii.autorizace;
+package com.serhii.autorizace.data;
 
 import android.database.sqlite.SQLiteDatabase;
 import android.hardware.camera2.params.StreamConfigurationMap;
@@ -9,6 +9,8 @@ import android.widget.EditText;
  */
 
 public interface Database {
-    boolean insertUser(String mLogin, String mPassword, String mName);
-    boolean enterProgramm(String mLogin, String mPassword);
+
+    boolean register(String login, String password, String name);
+
+    boolean login(String login, String password);
 }

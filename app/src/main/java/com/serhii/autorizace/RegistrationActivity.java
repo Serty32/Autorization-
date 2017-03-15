@@ -1,17 +1,13 @@
 package com.serhii.autorizace;
 
-import android.content.ContentValues;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.serhii.autorizace.data.HelpClass;
+import com.serhii.autorizace.data.MySQLiteDatabase;
 
 /**
  * Created by Serhii on 10.03.2017.
@@ -38,7 +34,7 @@ public class RegistrationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 MySQLiteDatabase mDatabase = new MySQLiteDatabase(RegistrationActivity.this);
-                if (mDatabase.insertUser(etLogin.getText().toString(),
+                if (mDatabase.register(etLogin.getText().toString(),
                         etPassword.getText().toString(), etName.getText().toString())) {
                     Toast.makeText(RegistrationActivity.this, "User has been add", Toast.LENGTH_LONG).show();
                 } else {

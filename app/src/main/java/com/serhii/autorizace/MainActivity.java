@@ -1,8 +1,6 @@
 package com.serhii.autorizace;
 
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.serhii.autorizace.data.HelpClass;
+import com.serhii.autorizace.data.MySQLiteDatabase;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 MySQLiteDatabase db = new MySQLiteDatabase(MainActivity.this);
-                if (db.enterProgramm(mLogin.getText().toString(), mPassword.getText().toString())) {
+                if (db.login(mLogin.getText().toString(), mPassword.getText().toString())) {
                     Intent intent = new Intent(MainActivity.this, EnterActivity.class);
                     startActivity(intent);
                 } else {
