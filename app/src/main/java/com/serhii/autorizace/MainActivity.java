@@ -17,13 +17,13 @@ public class MainActivity extends AppCompatActivity {
     private EditText mLogin;
     private EditText mPassword;
     private Button mEnter;
-    private Database mDatabase;
+    private MySQLiteDatabase mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mDatabase = new Database(this);
+        mDatabase = new MySQLiteDatabase(this);
         mLogin = (EditText) findViewById(R.id.edit_login);
         mPassword = (EditText) findViewById(R.id.edit_password);
         mEnter = (Button) findViewById(R.id.button_enter);
@@ -31,41 +31,19 @@ public class MainActivity extends AppCompatActivity {
         mEnter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SQLiteDatabase dp = mDatabase.getReadableDatabase();
-                String selection = HelpClass.Users._Id + "=?";
-                String[] projection = {HelpClass.Users._Id,HelpClass.Users.COLUMN_PASSWORD};
-                String[] selectionArgs = {mLogin.getText().toString()};
-                Cursor cursor = dp.query(HelpClass.Users.TABLE_NAME, projection, selection,
-                        selectionArgs, null, null, null);
-                if (cursor.moveToFirst()) {
-                    if (cursor.getString(cursor.getColumnIndex(HelpClass.Users.COLUMN_PASSWORD))
-                            .equals(mPassword.getText().toString())) {
-                        Intent intent = new Intent(MainActivity.this, EnterActivity.class);
-                        startActivity(intent);
-                    } else {
-                        Toast.makeText(MainActivity.this, "No rule wrote log or pass",
-                                Toast.LENGTH_LONG).show();
-                    }
+                MySQLiteDatabase db = new MySQLiteDatabase(MainActivity.this);
+                if (db.enterProgramm(mLogin.getText().toString(), mPassword.getText().toString())) {
+                    Intent intent = new Intent(MainActivity.this, EnterActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(MainActivity.this, "No rule wrote log or pass", Toast.LENGTH_LONG).show();
                 }
-                cursor.close();
             }
         });
     }
-
-
-
-
-
-
-
-
-
-
 
     public void onClickRegistration(View view) {
         Intent intent = new Intent(MainActivity.this,RegistrationActivity.class);
         startActivity(intent);
     }
 }
-
-

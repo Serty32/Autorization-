@@ -17,7 +17,7 @@
         android:id="@+id/button_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="information"
+        android:text="@string/btn_information"
         android:layout_gravity="bottom"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin" />
@@ -55,7 +55,7 @@
             android:id="@+id/button_registration_database"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Зарегистрироваться"
+            android:text="@string/btn_registration"
             android:onClick="onClickZareg"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginRight="@dimen/activity_horizontal_margin"/>

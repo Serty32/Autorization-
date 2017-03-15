@@ -17,7 +17,7 @@
         </activity>
 
         <activity android:name=".RegistrationActivity"
-            android:label="Регистрация"></activity>
+            android:label="Регистрация" />
         <activity android:name=".EnterActivity"
             android:label="Вконтакте">
         </activity>
