@@ -41,25 +41,33 @@ public class MySQLiteDatabase extends SQLiteOpenHelper implements Database {
     }
 
     public boolean register(String login, String password, String name) {
-        if (!login.isEmpty() && !password.isEmpty()) {
+        if (!login.isEmpty() && !password.isEmpty() && !name.isEmpty()) {
             SQLiteDatabase db = getWritableDatabase();
             ContentValues values = new ContentValues();
-            String[] projection = {Users.COLUMN_LOGIN, Users.COLUMN_NAME, Users.COLUMN_PASSWORD};
-            String selection = Users.COLUMN_LOGIN + "=?";
-            String[] selectionArgs = {login};
+            String[] projection = {Users.COLUMN_LOGIN};
+            String selection = Users.COLUMN_LOGIN + " = ?";
+            String[] selectionArgs = new String[]{login};
             Cursor cursor = db.query(Users.TABLE_NAME, projection, selection, selectionArgs,
                     null, null, null);
             if (cursor.getCount() == 0) {
+                cursor.close();
                 values.put(Users.COLUMN_LOGIN, login);
                 values.put(Users.COLUMN_PASSWORD, password);
                 values.put(Users.COLUMN_NAME, name);
+                long newRowId = db.insert(Users.TABLE_NAME, null, values);
+                if(newRowId == -1)
+                    return  false;
+                else {
+                    db.close();
+                    return true;
+                }
             }
+
             cursor.close();
-            return true;
-        } else {
-            return false;
         }
+        return false;
     }
+
 
     public boolean login(String login, String password) {
 
@@ -71,9 +79,11 @@ public class MySQLiteDatabase extends SQLiteOpenHelper implements Database {
                 selectionArgs, null, null, null);
         if (cursor.moveToFirst() && cursor.getString(cursor.getColumnIndex(Users.COLUMN_PASSWORD)).equals(password)) {
             cursor.close();
+            db.close();
             return true;
         }
         cursor.close();
+        db.close();
         return  false;
     }
 }

@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.serhii.autorizace.data.Database;
 import com.serhii.autorizace.data.MySQLiteDatabase;
 
 /**
@@ -19,7 +20,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private EditText etPassword;
     private EditText etName;
     private Button btnRegistration;
-    private Button btnInfo;
+    Database db = new MySQLiteDatabase(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +34,7 @@ public class RegistrationActivity extends AppCompatActivity {
         btnRegistration.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MySQLiteDatabase mDatabase = new MySQLiteDatabase(RegistrationActivity.this);
-                if (mDatabase.register(etLogin.getText().toString(),
+                if (db.register(etLogin.getText().toString(),
                         etPassword.getText().toString(), etName.getText().toString())) {
                     Toast.makeText(RegistrationActivity.this, "User has been add", Toast.LENGTH_LONG).show();
                 } else {
