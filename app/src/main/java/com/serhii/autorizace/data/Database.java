@@ -13,4 +13,5 @@ public interface Database {
     boolean register(String login, String password, String name);
 
     boolean login(String login, String password);
+    boolean insertNews(String caption, String news);
 }

@@ -15,13 +15,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".RegistrationActivity"
             android:label="Регистрация" />
         <activity android:name=".EnterActivity"
-            android:label="Вконтакте">
-        </activity>
-
+            android:label="Вконтакте"/>
+        <activity android:name=".AddActivity"
+            android:label="Добавить новость"/>
     </application>
-
 </manifest>

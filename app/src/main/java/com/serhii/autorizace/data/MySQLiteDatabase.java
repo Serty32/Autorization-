@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.provider.BaseColumns;
+import android.widget.Toast;
 
 /**
  * Created by Serhii on 11.03.2017.
@@ -23,6 +25,15 @@ public class MySQLiteDatabase extends SQLiteOpenHelper implements Database {
         public static final String COLUMN_NAME = "name";
     }
 
+    public static final class News implements BaseColumns{
+        public static final String TABLE_NAME = "news";
+        public static  String _ID = BaseColumns._ID;
+        public static final String COLUMN_CAPTION = "caption";
+        public static final String COLUMN_TEXT = "text";
+
+    }
+
+
     public MySQLiteDatabase(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -32,12 +43,39 @@ public class MySQLiteDatabase extends SQLiteOpenHelper implements Database {
         String SQL_CREATE_USER_TABLE = "CREATE TABLE " + Users.TABLE_NAME + "("
                 + Users.COLUMN_LOGIN + "," + Users.COLUMN_PASSWORD + "," + Users.COLUMN_NAME
                 + ")";
+        String SQL_CREATE_NEWS_TABLE = "CREATE TABLE " + News.TABLE_NAME + "(" + News._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + News.COLUMN_CAPTION + "," +
+                News.COLUMN_TEXT + ")";
+        db.execSQL(SQL_CREATE_NEWS_TABLE);
         db.execSQL(SQL_CREATE_USER_TABLE);
     }
 
     @Override
     public void onUpgrade(android.database.sqlite.SQLiteDatabase db, int oldVersion, int newVersion) {
 
+
+
+    }
+
+    public boolean insertNews(String caption, String news) {
+        if (!caption.isEmpty() && !news.isEmpty()) {
+            SQLiteDatabase db = getWritableDatabase();
+            ContentValues values = new ContentValues();
+            String[] projection = {News._ID};
+            Cursor cursor = db.query(News.TABLE_NAME, projection, null , null , null , null , null);
+                values.put(News.COLUMN_CAPTION, caption);
+                values.put(News.COLUMN_TEXT, news);
+                long newRowID = db.insert(News.TABLE_NAME, null, values);
+                if (newRowID == -1) {
+                    cursor.close();
+                    db.close();
+                    return false;
+                } else {
+                    cursor.close();
+                    db.close();
+                    return true;
+                }
+        }
+        return false;
     }
 
     public boolean register(String login, String password, String name) {
@@ -70,7 +108,6 @@ public class MySQLiteDatabase extends SQLiteOpenHelper implements Database {
 
 
     public boolean login(String login, String password) {
-
         SQLiteDatabase db = getReadableDatabase();
         String selection = Users.COLUMN_LOGIN + "=?";
         String[] projection = {Users.COLUMN_LOGIN, Users.COLUMN_PASSWORD};
