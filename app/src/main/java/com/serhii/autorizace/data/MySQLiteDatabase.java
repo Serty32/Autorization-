@@ -33,7 +33,6 @@ public class MySQLiteDatabase extends SQLiteOpenHelper implements Database {
 
     }
 
-
     public MySQLiteDatabase(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -41,8 +40,7 @@ public class MySQLiteDatabase extends SQLiteOpenHelper implements Database {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String SQL_CREATE_USER_TABLE = "CREATE TABLE " + Users.TABLE_NAME + "("
-                + Users.COLUMN_LOGIN + "," + Users.COLUMN_PASSWORD + "," + Users.COLUMN_NAME
-                + ")";
+                + Users.COLUMN_LOGIN + "," + Users.COLUMN_PASSWORD + "," + Users.COLUMN_NAME + ")";
         String SQL_CREATE_NEWS_TABLE = "CREATE TABLE " + News.TABLE_NAME + "(" + News._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + News.COLUMN_CAPTION + "," +
                 News.COLUMN_TEXT + ")";
         db.execSQL(SQL_CREATE_NEWS_TABLE);
@@ -51,8 +49,6 @@ public class MySQLiteDatabase extends SQLiteOpenHelper implements Database {
 
     @Override
     public void onUpgrade(android.database.sqlite.SQLiteDatabase db, int oldVersion, int newVersion) {
-
-
 
     }
 
@@ -100,12 +96,10 @@ public class MySQLiteDatabase extends SQLiteOpenHelper implements Database {
                     return true;
                 }
             }
-
             cursor.close();
         }
         return false;
     }
-
 
     public boolean login(String login, String password) {
         SQLiteDatabase db = getReadableDatabase();

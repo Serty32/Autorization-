@@ -16,7 +16,6 @@ import com.serhii.autorizace.data.MySQLiteDatabase;
 /**
  * Created by Serhii on 16.03.2017.
  */
-
 public class AddActivity extends AppCompatActivity {
     private EditText edCaption;
     private EditText edText;

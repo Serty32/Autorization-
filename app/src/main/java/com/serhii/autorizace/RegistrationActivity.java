@@ -1,5 +1,6 @@
 package com.serhii.autorizace;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -37,6 +38,8 @@ public class RegistrationActivity extends AppCompatActivity {
                 if (db.register(etLogin.getText().toString(),
                         etPassword.getText().toString(), etName.getText().toString())) {
                     Toast.makeText(RegistrationActivity.this, "User has been add", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(RegistrationActivity.this,MainActivity.class);
+                    startActivity(intent);  
                 } else {
                     Toast.makeText(RegistrationActivity.this, "Error at the add user", Toast.LENGTH_LONG).show();
                 }

@@ -4,9 +4,9 @@
     <string name = "btn_enter">Enter</string>
     <string name = "edit_autorization">Autorization</string>
     <string name = "btn_information">Information</string>
-    <string name="action_menu">Добавить</string>
+    <string name="action_menu">Add</string>
     <string name="btn_news">AddNews</string>
-    <string name="edit_add_News">Введите заголовок</string>
-    <string name="edit_news">Напишите вашу новость</string>
+    <string name="edit_add_News">Write caption, please</string>
+    <string name="edit_news">write your news, please</string>
 </resources>
 
