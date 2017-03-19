@@ -15,13 +15,13 @@ public class MainActivity extends AppCompatActivity {
     private EditText mLogin;
     private EditText mPassword;
     private Button mEnter;
-    private MySQLiteDatabase mDatabase;
+    private MySQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mDatabase = new MySQLiteDatabase(this);
+        db = new MySQLiteDatabase(this);
         mLogin = (EditText) findViewById(R.id.edit_login);
         mPassword = (EditText) findViewById(R.id.edit_password);
         mEnter = (Button) findViewById(R.id.button_enter);
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         mEnter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MySQLiteDatabase db = new MySQLiteDatabase(MainActivity.this);
+                 db = new MySQLiteDatabase(MainActivity.this);
                 if (db.login(mLogin.getText().toString(), mPassword.getText().toString())) {
                     Intent intent = new Intent(MainActivity.this, EnterActivity.class);
                     startActivity(intent);

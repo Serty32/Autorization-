@@ -140,5 +140,4 @@ public class MySQLiteDatabase extends SQLiteOpenHelper implements Database {
         }
         return  posts;
     }
-
 }

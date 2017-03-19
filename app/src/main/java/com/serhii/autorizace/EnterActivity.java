@@ -35,7 +35,7 @@ public class EnterActivity extends AppCompatActivity {
         MyRecycleViewAdapter adapter = new MyRecycleViewAdapter(db.getPosts());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(linearLayoutManager);
-        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

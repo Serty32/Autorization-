@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import com.serhii.autorizace.data.MySQLiteDatabase;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 import static android.support.v7.widget.RecyclerView.*;
@@ -34,6 +36,7 @@ public class MyRecycleViewAdapter extends RecyclerView.Adapter<MyRecycleViewAdap
         Post post = posts.get(position);
         holder.title.setText(post.getTitle());
         holder.text.setText(post.getText());
+       //  текст новости
     }
 
     @Override
@@ -46,10 +49,22 @@ public class MyRecycleViewAdapter extends RecyclerView.Adapter<MyRecycleViewAdap
         TextView title;
         TextView text;
 
-        public ViewHolder(View view) {
+        public ViewHolder(final View view) {
             super(view);
-            title = (TextView)view.findViewById(R.id.text_title);
-            text = (TextView)view.findViewById(R.id.text_news);
-        }
+            title = (TextView) view.findViewById(R.id.text_title);
+            text = (TextView) view.findViewById(R.id.text_news);
+            view.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                        if (text.getVisibility() == GONE) {
+                            text.setVisibility(View.VISIBLE);
+                        } else {
+                            text.setVisibility(View.INVISIBLE);
+                        }
+                    }
+                
+            });
+
+         }
     }
 }
