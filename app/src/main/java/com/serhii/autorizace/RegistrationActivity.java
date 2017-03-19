@@ -39,7 +39,7 @@ public class RegistrationActivity extends AppCompatActivity {
                         etPassword.getText().toString(), etName.getText().toString())) {
                     Toast.makeText(RegistrationActivity.this, "User has been add", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(RegistrationActivity.this,MainActivity.class);
-                    startActivity(intent);  
+                    startActivity(intent);
                 } else {
                     Toast.makeText(RegistrationActivity.this, "Error at the add user", Toast.LENGTH_LONG).show();
                 }

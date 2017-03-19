@@ -6,7 +6,17 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
+import android.support.annotation.NonNull;
 import android.widget.Toast;
+
+import com.serhii.autorizace.Post;
+
+import java.net.PasswordAuthentication;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 
 /**
  * Created by Serhii on 11.03.2017.
@@ -117,4 +127,18 @@ public class MySQLiteDatabase extends SQLiteOpenHelper implements Database {
         db.close();
         return  false;
     }
+
+    public List<Post> getPosts() {
+        SQLiteDatabase db = getReadableDatabase();
+        List<Post> posts = new ArrayList<>();
+        String[] projection = {News.COLUMN_CAPTION, News.COLUMN_TEXT};
+        Cursor cursor = db.query(News.TABLE_NAME, projection, null, null, null, null, null, null);
+        while (cursor.moveToNext()) {
+            String title = cursor.getString(cursor.getColumnIndex(News.COLUMN_CAPTION));
+            String text = cursor.getString(cursor.getColumnIndex(News.COLUMN_TEXT));
+            posts.add(new Post(title, text));
+        }
+        return  posts;
+    }
+
 }

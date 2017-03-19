@@ -32,7 +32,7 @@ public class AddActivity extends AppCompatActivity {
         button_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (db.insertNews(edText.getText().toString(), edCaption.getText().toString()))
+                if (db.insertNews( edCaption.getText().toString(), edText.getText().toString()))
                     Toast.makeText(AddActivity.this, "News has been add", Toast.LENGTH_LONG).show();
                 else
                     Toast.makeText(AddActivity.this, "Error", Toast.LENGTH_LONG).show();
