@@ -11,6 +11,9 @@ import org.w3c.dom.Text;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 import static android.support.v7.widget.RecyclerView.*;
 
 /**
@@ -46,13 +49,12 @@ public class MyRecycleViewAdapter extends RecyclerView.Adapter<MyRecycleViewAdap
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView title;
-        TextView text;
+        @BindView(R.id.text_title) TextView title;
+        @BindView(R.id.text_news) TextView text;
 
         public ViewHolder(final View view) {
             super(view);
-            title = (TextView) view.findViewById(R.id.text_title);
-            text = (TextView) view.findViewById(R.id.text_news);
+            ButterKnife.bind(this,view);
             view.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -62,9 +64,7 @@ public class MyRecycleViewAdapter extends RecyclerView.Adapter<MyRecycleViewAdap
                             text.setVisibility(View.INVISIBLE);
                         }
                     }
-                
             });
-
          }
     }
 }

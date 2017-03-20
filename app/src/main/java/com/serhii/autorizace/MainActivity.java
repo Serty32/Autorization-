@@ -10,11 +10,15 @@ import android.widget.Toast;
 
 import com.serhii.autorizace.data.MySQLiteDatabase;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 public class MainActivity extends AppCompatActivity {
 
-    private EditText mLogin;
-    private EditText mPassword;
-    private Button mEnter;
+    @BindView(R.id.button_enter) Button mEnter;
+    @BindView(R.id.edit_login) EditText mLogin;
+    @BindView(R.id.edit_password) EditText mPassword;
     private MySQLiteDatabase db;
 
     @Override
@@ -22,22 +26,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         db = new MySQLiteDatabase(this);
-        mLogin = (EditText) findViewById(R.id.edit_login);
-        mPassword = (EditText) findViewById(R.id.edit_password);
-        mEnter = (Button) findViewById(R.id.button_enter);
+        ButterKnife.bind(this);
+    }
 
-        mEnter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                 db = new MySQLiteDatabase(MainActivity.this);
-                if (db.login(mLogin.getText().toString(), mPassword.getText().toString())) {
-                    Intent intent = new Intent(MainActivity.this, EnterActivity.class);
-                    startActivity(intent);
-                } else {
-                    Toast.makeText(MainActivity.this, "No rule wrote log or pass", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
+    @OnClick(R.id.button_enter)
+    public void button_enter() {
+        db = new MySQLiteDatabase(MainActivity.this);
+        if (db.login(mLogin.getText().toString(), mPassword.getText().toString())) {
+            Intent intent = new Intent(MainActivity.this, EnterActivity.class);
+            startActivity(intent);
+        } else {
+            Toast.makeText(MainActivity.this, "No rule wrote log or pass", Toast.LENGTH_LONG).show();
+        }
     }
 
     public void onClickRegistration(View view) {
