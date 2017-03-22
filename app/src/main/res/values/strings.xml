@@ -8,5 +8,6 @@
     <string name="btn_news">AddNews</string>
     <string name="edit_add_News">Write caption, please</string>
     <string name="edit_news">write your news, please</string>
+    <string name="btn_comment">Add comment</string>
 </resources>
 

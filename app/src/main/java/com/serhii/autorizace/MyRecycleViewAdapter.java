@@ -1,5 +1,6 @@
 package com.serhii.autorizace;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -58,11 +59,13 @@ public class MyRecycleViewAdapter extends RecyclerView.Adapter<MyRecycleViewAdap
             view.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                        if (text.getVisibility() == GONE) {
-                            text.setVisibility(View.VISIBLE);
-                        } else {
-                            text.setVisibility(View.INVISIBLE);
-                        }
+                    if (text.getVisibility() == GONE) {
+                        text.setVisibility(View.VISIBLE);
+                    } else {
+                        text.setVisibility(View.INVISIBLE);
+                    }
+                    Intent intent = new Intent(EnterActivity.class,PostActivity.class);
+                    startActivity(intent);
                     }
             });
          }

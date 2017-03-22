@@ -23,7 +23,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
     @BindView(R.id.edit_login) EditText etLogin;
     @BindView(R.id.edit_password) EditText etPassword;
-    @BindView(R.id.edit_jmeno) EditText etName;
+    @BindView(R.id.edit_jmeno)  EditText etName;
     @BindView(R.id.button_registration_database) Button btnRegistration;
     Database db = new MySQLiteDatabase(this);
 

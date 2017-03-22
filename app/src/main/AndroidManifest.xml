@@ -22,5 +22,6 @@
         <activity android:name=".AddActivity"
             android:label="Добавить новость"
             android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".PostActivity" />
     </application>
 </manifest>
