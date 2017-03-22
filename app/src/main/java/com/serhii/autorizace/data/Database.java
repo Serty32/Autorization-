@@ -20,5 +20,7 @@ public interface Database {
 
     boolean insertNews(String caption, String news);
 
+    boolean insertComment(String comment);
+
     List<Post> getPosts();
 }

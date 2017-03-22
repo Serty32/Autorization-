@@ -40,6 +40,7 @@ public class MySQLiteDatabase extends SQLiteOpenHelper implements Database {
         public static  String _ID = BaseColumns._ID;
         public static final String COLUMN_CAPTION = "caption";
         public static final String COLUMN_TEXT = "text";
+        public static final String COLUMN_COMMENT = "comment";
 
     }
 
@@ -52,7 +53,7 @@ public class MySQLiteDatabase extends SQLiteOpenHelper implements Database {
         String SQL_CREATE_USER_TABLE = "CREATE TABLE " + Users.TABLE_NAME + "("
                 + Users.COLUMN_LOGIN + "," + Users.COLUMN_PASSWORD + "," + Users.COLUMN_NAME + ")";
         String SQL_CREATE_NEWS_TABLE = "CREATE TABLE " + News.TABLE_NAME + "(" + News._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + News.COLUMN_CAPTION + "," +
-                News.COLUMN_TEXT + ")";
+                News.COLUMN_TEXT + "," + News.COLUMN_COMMENT + ")";
         db.execSQL(SQL_CREATE_NEWS_TABLE);
         db.execSQL(SQL_CREATE_USER_TABLE);
     }
@@ -80,6 +81,27 @@ public class MySQLiteDatabase extends SQLiteOpenHelper implements Database {
                     db.close();
                     return true;
                 }
+        }
+        return false;
+    }
+
+    public boolean insertComment(String comment){
+        if(!comment.isEmpty()) {
+            SQLiteDatabase db = getWritableDatabase();
+            ContentValues values = new ContentValues();
+            String[] projection = {News._ID};
+            Cursor cursor = db.query(News.TABLE_NAME, projection, null, null, null, null, null);
+            values.put(News.COLUMN_COMMENT,comment);
+            long newRowId = db.insert(News.TABLE_NAME, null, values);
+            if(newRowId == -1) {
+                cursor.close();
+                db.close();
+                return false;
+            } else {
+                cursor.close();
+                db.close();
+                return true;
+            }
         }
         return false;
     }

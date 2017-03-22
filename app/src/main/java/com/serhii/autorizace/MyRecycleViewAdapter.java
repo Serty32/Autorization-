@@ -53,7 +53,7 @@ public class MyRecycleViewAdapter extends RecyclerView.Adapter<MyRecycleViewAdap
         @BindView(R.id.text_title) TextView title;
         @BindView(R.id.text_news) TextView text;
 
-        public ViewHolder(final View view) {
+        public ViewHolder(View view) {
             super(view);
             ButterKnife.bind(this,view);
             view.setOnClickListener(new OnClickListener() {
@@ -64,8 +64,10 @@ public class MyRecycleViewAdapter extends RecyclerView.Adapter<MyRecycleViewAdap
                     } else {
                         text.setVisibility(View.INVISIBLE);
                     }
-                    Intent intent = new Intent(EnterActivity.class,PostActivity.class);
-                    startActivity(intent);
+                    /*
+                    Intent intent = new Intent(EnterActivity.class, PostActivity.class);
+                    Витя как тут сделать переключение на другой экран их этого класса???
+                    */
                     }
             });
          }

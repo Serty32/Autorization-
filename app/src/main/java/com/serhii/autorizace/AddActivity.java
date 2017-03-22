@@ -15,6 +15,8 @@ import com.serhii.autorizace.data.MySQLiteDatabase;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnCheckedChanged;
+import butterknife.OnClick;
 
 /**
  * Created by Serhii on 16.03.2017.
@@ -30,14 +32,13 @@ public class AddActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
         ButterKnife.bind(this);
-        button_add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (db.insertNews( edCaption.getText().toString(), edNews.getText().toString()))
-                    Toast.makeText(AddActivity.this, "News has been add", Toast.LENGTH_LONG).show();
-                else
-                    Toast.makeText(AddActivity.this, "Error", Toast.LENGTH_LONG).show();
-            }
-        });
     }
-}
+
+        @OnClick(R.id.button_add)
+        public void addNews(View view) {
+            if (db.insertNews( edCaption.getText().toString(), edNews.getText().toString()))
+                Toast.makeText(AddActivity.this, "News has been add", Toast.LENGTH_LONG).show();
+            else
+                Toast.makeText(AddActivity.this, "Error", Toast.LENGTH_LONG).show();
+        }
+    }

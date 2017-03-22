@@ -18,11 +18,16 @@ import android.widget.Toast;
 import com.serhii.autorizace.data.Database;
 import com.serhii.autorizace.data.MySQLiteDatabase;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 /**
  * Created by Serhii on 12.03.2017.
  */
 
 public class EnterActivity extends AppCompatActivity {
+    @BindView(R.id.button_addComment) Button buttonAddComment;
      private Database db;
 
     @Override
@@ -30,11 +35,18 @@ public class EnterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         db = new MySQLiteDatabase(this);
         setContentView(R.layout.activity_enter);
+        ButterKnife.bind(this);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
         MyRecycleViewAdapter adapter = new MyRecycleViewAdapter(db.getPosts());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(linearLayoutManager);
+    }
+
+    @OnClick(R.id.button_addComment)
+    public  void buttonComment(View view) {
+        Intent intent = new Intent(EnterActivity.this, PostActivity.class);
+        startActivity(intent);
     }
 
     @Override
