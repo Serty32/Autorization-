@@ -24,6 +24,7 @@ public class RegistrationActivity extends AppCompatActivity {
     @BindView(R.id.edit_login) EditText etLogin;
     @BindView(R.id.edit_password) EditText etPassword;
     @BindView(R.id.edit_jmeno)  EditText etName;
+    @BindView(R.id.edit_surname) EditText etSurname;
     @BindView(R.id.button_registration_database) Button btnRegistration;
     Database db = new MySQLiteDatabase(this);
 
@@ -37,7 +38,7 @@ public class RegistrationActivity extends AppCompatActivity {
     @OnClick(R.id.button_registration_database)
     public void button_registration_database() {
         if (db.register(etLogin.getText().toString(),
-                etPassword.getText().toString(), etName.getText().toString())) {
+                etPassword.getText().toString(), etName.getText().toString(), etSurname.getText().toString())) {
             Toast.makeText(RegistrationActivity.this, "User has been add", Toast.LENGTH_LONG).show();
             Intent intent = new Intent(RegistrationActivity.this, MainActivity.class);
             startActivity(intent);

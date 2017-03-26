@@ -1,5 +1,6 @@
 package com.serhii.autorizace;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
@@ -32,6 +33,9 @@ public class PostActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
         ButterKnife.bind(this);
+        Intent intent = getIntent();
+        String text = intent.getStringExtra("textFromPost");
+        textPost.setText(text);
     }
     @OnClick(R.id.button_comment)
     public void addComment(View view){

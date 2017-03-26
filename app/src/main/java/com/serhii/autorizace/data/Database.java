@@ -14,7 +14,7 @@ import java.util.List;
 
 public interface Database {
 
-    boolean register(String login, String password, String name);
+    boolean register(String login, String password, String name, String surname);
 
     boolean login(String login, String password);
 
